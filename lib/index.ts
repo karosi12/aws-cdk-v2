@@ -1,20 +1,9 @@
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { App, Stack, StackProps } from "aws-cdk-lib";
+import { Todo } from "../lib/modules/todo/todo-stack";
 
-export interface AwsCdkV2Props {
-  // Define construct properties here
-}
-
-export class AwsCdkV2 extends Construct {
-
-  constructor(scope: Construct, id: string, props: AwsCdkV2Props = {}) {
-    super(scope, id);
-
-    // Define construct contents here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'AwsCdkV2Queue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+export class TodoStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
+    super(scope, id, props);
+    new Todo(this, "Todo");
   }
 }

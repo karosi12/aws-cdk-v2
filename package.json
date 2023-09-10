@@ -6,15 +6,22 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest"
+    "test": "jest",
+    "cdk": "cdk",
+    "deploy": "npm cdk deploy --require-approval never",
+    "postinstall": "tsc"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.119",
+    "@types/babel__core": "7.1.18",
+    "@types/babel__traverse": "7.14.2",
     "@types/jest": "^27.5.0",
     "@types/node": "10.17.27",
     "@types/prettier": "2.6.0",
     "aws-cdk-lib": "2.27.0",
-    "constructs": "^10.0.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "ts-jest": "^27.1.4",
     "typescript": "~3.9.7"
@@ -26,6 +33,20 @@
   "dependencies": {
     "@aws-lambda-powertools/logger": "^1.12.1",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1454.0"
+    "aws-sdk": "^2.1454.0",
+    "dotenv": "^16.3.1"
+  },
+  "targets": {
+    "cdk-lambda": {
+      "context": "node",
+      "includeNodeModules": {
+        "aws-sdk": false
+      },
+      "sourceMap": false,
+      "minify": false,
+      "engines": {
+        "node": ">= 12"
+      }
+    }
   }
 }
